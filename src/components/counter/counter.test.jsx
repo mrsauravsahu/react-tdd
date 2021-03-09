@@ -5,6 +5,12 @@ import React from 'react';
 import { Counter } from './counter';
 
 describe(Counter.name, () => {
+  test('should match snapshot', () => {
+    const { container } = render(<Counter />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   test('should display the current count', () => {
     render(<Counter />);
 

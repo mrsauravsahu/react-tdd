@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 export const Counter = () => {
   const [count, setCount] = useState(0);
   return (
-    <>
+    <div>
       <div>{`Current count is ${count}`}</div>
       <button
         type="button"
@@ -11,6 +11,6 @@ export const Counter = () => {
       >
         Increment Counter
       </button>
-    </>
+    </div>
   );
 };

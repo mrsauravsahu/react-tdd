@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter should match snapshot 1`] = `
+<div>
+  <div>
+    <div>
+      Current count is 0
+    </div>
+    <button
+      type="button"
+    >
+      Increment Counter
+    </button>
+  </div>
+</div>
+`;
