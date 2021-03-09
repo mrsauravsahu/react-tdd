@@ -1,7 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { getNumber } from '../../utils/randomize';
 
 export const Counter = () => {
   const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    const randomNumber = getNumber();
+    setCount(randomNumber);
+  }, []);
+
   return (
     <div>
       <div>{`Current count is ${count}`}</div>

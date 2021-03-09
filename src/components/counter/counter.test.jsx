@@ -2,9 +2,16 @@ import {
   fireEvent, render, screen,
 } from '@testing-library/react';
 import React from 'react';
+import { getNumber } from '../../utils/randomize';
 import { Counter } from './counter';
 
+jest.mock('../../utils/randomize');
+
 describe(Counter.name, () => {
+  beforeEach(() => {
+    getNumber.mockReturnValue(0);
+  });
+
   test('should match snapshot', () => {
     const { container } = render(<Counter />);
 
@@ -31,5 +38,14 @@ describe(Counter.name, () => {
     fireEvent.click(incrementElement);
 
     screen.getByText('Current count is 1');
+  });
+
+  test('should set the initial value from randomize', () => {
+    getNumber.mockReturnValue(45);
+
+    render(<Counter />);
+
+    expect(getNumber).toHaveBeenCalledTimes(1);
+    screen.getByText('Current count is 45');
   });
 });
