@@ -1,5 +1,5 @@
 import {
-  fireEvent, render, screen,
+  fireEvent, render, screen, waitFor,
 } from '@testing-library/react';
 import React from 'react';
 import { getNumber } from '../../utils/randomize';
@@ -9,7 +9,7 @@ jest.mock('../../utils/randomize');
 
 describe(Counter.name, () => {
   beforeEach(() => {
-    getNumber.mockReturnValue(0);
+    getNumber.mockResolvedValue(0);
   });
 
   test('should match snapshot', () => {
@@ -18,34 +18,34 @@ describe(Counter.name, () => {
     expect(container).toMatchSnapshot();
   });
 
-  test('should display the current count', () => {
+  test('should display the current count', async () => {
     render(<Counter />);
 
-    screen.getByText('Current count is 0');
+    await waitFor(() => screen.getByText('Current count is 0'));
   });
 
-  test('should display an increment button', () => {
+  test('should display an increment button', async () => {
     render(<Counter />);
 
-    const incrementElement = screen.getByText('Increment Counter');
+    const incrementElement = await waitFor(() => screen.getByText('Increment Counter'));
     expect(incrementElement.tagName).toBe('BUTTON');
   });
 
-  test('should update the message when increment button is clicked', () => {
+  test('should update the message when increment button is clicked', async () => {
     render(<Counter />);
 
     const incrementElement = screen.getByText('Increment Counter');
     fireEvent.click(incrementElement);
 
-    screen.getByText('Current count is 1');
+    await waitFor(() => screen.getByText('Current count is 1'));
   });
 
-  test('should set the initial value from randomize', () => {
-    getNumber.mockReturnValue(45);
+  test('should set the initial value from randomize', async () => {
+    getNumber.mockResolvedValue(45);
 
     render(<Counter />);
 
     expect(getNumber).toHaveBeenCalledTimes(1);
-    screen.getByText('Current count is 45');
+    await waitFor(() => screen.getByText('Current count is 45'));
   });
 });

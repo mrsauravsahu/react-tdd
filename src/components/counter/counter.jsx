@@ -4,8 +4,8 @@ import { getNumber } from '../../utils/randomize';
 export const Counter = () => {
   const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    const randomNumber = getNumber();
+  useEffect(async () => {
+    const randomNumber = await getNumber();
     setCount(randomNumber);
   }, []);
 
