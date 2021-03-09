@@ -14,7 +14,6 @@ describe(Counter.name, () => {
 
   test('should match snapshot', () => {
     const { container } = render(<Counter />);
-
     expect(container).toMatchSnapshot();
   });
 

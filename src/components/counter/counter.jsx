@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getNumber } from '../../utils/randomize';
+import styles from './counter.module.css';
 
 export const Counter = () => {
   const [count, setCount] = useState(0);
@@ -10,9 +11,10 @@ export const Counter = () => {
   }, []);
 
   return (
-    <div>
-      <div>{`Current count is ${count}`}</div>
+    <div className={styles.container}>
+      <div className={styles.message}>{`Current count is ${count}`}</div>
       <button
+        className={styles.incrementButton}
         type="button"
         onClick={() => setCount(count + 1)}
       >
