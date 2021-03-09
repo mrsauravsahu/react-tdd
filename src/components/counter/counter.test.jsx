@@ -1,4 +1,6 @@
-import { render, screen } from '@testing-library/react';
+import {
+  fireEvent, render, screen,
+} from '@testing-library/react';
 import React from 'react';
 import { Counter } from './counter';
 
@@ -14,5 +16,14 @@ describe(Counter.name, () => {
 
     const incrementElement = screen.getByText('Increment Counter');
     expect(incrementElement.tagName).toBe('BUTTON');
+  });
+
+  test('should update the message when increment button is clicked', () => {
+    render(<Counter />);
+
+    const incrementElement = screen.getByText('Increment Counter');
+    fireEvent.click(incrementElement);
+
+    screen.getByText('Current count is 1');
   });
 });
