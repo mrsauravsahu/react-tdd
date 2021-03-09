@@ -2,11 +2,16 @@
 
 exports[`Counter should match snapshot 1`] = `
 <div>
-  <div>
-    <div>
+  <div
+    class="container"
+  >
+    <div
+      class="message"
+    >
       Current count is 0
     </div>
     <button
+      class="incrementButton"
       type="button"
     >
       Increment Counter

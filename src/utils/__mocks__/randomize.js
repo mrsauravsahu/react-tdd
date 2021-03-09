@@ -1,3 +1,1 @@
-throw new Error('lel');
-
-export const getNumber = () => Promise.resolve(3);
+export const getNumber = jest.fn(() => Promise.resolve(3));

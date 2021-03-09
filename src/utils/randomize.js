@@ -1,1 +1,1 @@
-export const getNumber = () => Promise.resolve(Math.floor(Math.random() * 100));
+export const getNumber = () => Promise.resolve(100);
